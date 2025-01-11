@@ -114,9 +114,7 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     imageWrapper: {
-        position: 'absolute',
-        top: 400,
-        right: 725,
+        position: 'static',
         width: 100,
         height: 100,
         justifyContent: 'center',
