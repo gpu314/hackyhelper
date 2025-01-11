@@ -43,6 +43,7 @@ export default function App() {
 
     return (
         <View style={styles.container}>
+                <Text style={styles.title}>Chatbot</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Enter your text here"
