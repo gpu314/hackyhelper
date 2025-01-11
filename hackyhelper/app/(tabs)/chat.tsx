@@ -1,19 +1,29 @@
 import Groq from 'groq-sdk';
 
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList } from 'react-native';
+import * as Speech from 'expo-speech';
+
+interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+}
+
+const VOICE = "com.apple.ttsbundle.Samantha-compact";
 
 export default function App() {
     const [inputText, setInputText] = useState('');
-    const [result, setResult] = useState('');
+    const [result, setResult] = useState<Message[]>([
+        { role: 'assistant', content: "Welcome to the hackathon!" }
+    ]);
     const [loading, setLoading] = useState(false);
     const [currentFrame, setCurrentFrame] = useState(0);
 
     const client = new Groq({
-        apiKey: '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', // This is the default and can be omitted
+        apiKey: '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',
         dangerouslyAllowBrowser: true,
     });
-    
+
 
     async function aiResponse(text: string) {
         const chatCompletion = await client.chat.completions.create({
@@ -31,18 +41,32 @@ export default function App() {
         if (!inputText.trim()) return;
 
         setLoading(true);
-        setResult('');
 
         try {
+            setResult((prev) => [...prev, { role: 'user', content: inputText }]);
             const response = await aiResponse(inputText);
-            setResult(response || "No response generated.");
+            setResult((prev) => [...prev, { role: 'assistant', content: response || "No response generated." }]);
+            Speech.speak(response || "No response generated.", {
+                voice: VOICE,
+                pitch: 1.2,
+                rate: 0.9,
+            });
         } catch (error) {
-            setResult('Error generating response.');
+            setResult((prev) => [...prev, { role: 'assistant', content: "Error generating response." }]);
             console.error(error);
         } finally {
             setLoading(false);
+            setInputText("");
         }
     };
+
+    const renderResult = ({ item }: { item: Message }) => {
+        return (
+            <View style={[(item.role === 'user') ? styles.userMessage : styles.assistantMessage]}>
+                <Text>{item.content}</Text>
+            </View>
+        )
+    }
 
     const urls = [
         require("../images/1.png"), require("../images/2.png"), require("../images/3.png"),
@@ -61,31 +85,30 @@ export default function App() {
         return () => clearInterval(interval); // Clean up on component unmount
     }, []);
 
-
     return (
-        <View style={styles.container} >
-            <Text style={styles.title}> Chatbot </Text>
-            < View style={styles.chat} >
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your text here"
-                    value={inputText}
-                    onChangeText={setInputText}
-                />
-                <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
-                {result !== '' && <Text style={styles.result}> {result} </Text>
-                }
-                <View style={styles.imageWrapper}>
-                    <Image source={urls[currentFrame]} style={styles.image} />
-                </View>
+        <View style={styles.container}>
+            <Text style={styles.title}>Chatbot</Text>
+            <FlatList
+                data={result}
+                renderItem={renderResult}
+                keyExtractor={(_, index) => index.toString()}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Enter your text here"
+                value={inputText}
+                onChangeText={setInputText}
+            />
+            <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+
+            <View style={styles.imageWrapper}>
+                <Image source={urls[currentFrame]} style={styles.image} />
             </View>
 
-        </View>
-    );
-}
+        </View>)
+};
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
         paddingTop: 100,
@@ -105,8 +128,21 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     input: {
-        height: 40,
+        padding: 10,
+        borderRadius: 5,
         textAlign: 'center'
+    },
+    userMessage: {
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#D1E7DD',
+        alignSelf: 'flex-end'
+    },
+    assistantMessage: {
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#F8D7DA',
+        alignSelf: 'flex-start'
     },
     chat: {
         flex: 1,
