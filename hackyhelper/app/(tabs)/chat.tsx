@@ -15,7 +15,7 @@ export default function App() {
     async function aiResponse(text: string) {
         const chatCompletion = await client.chat.completions.create({
             messages: [
-                {role: 'system', content: 'You are a helpful assistant for a hackathon attendee. Limit your responses to three sentences unless otherwise specified.'},
+                { role: 'system', content: 'You are a helpful assistant for a hackathon attendee. Limit your responses to three sentences unless otherwise specified.' },
                 { role: 'user', content: text }
             ],
             model: 'llama3-8b-8192',
@@ -43,15 +43,16 @@ export default function App() {
 
     return (
         <View style={styles.container}>
-                <Text style={styles.title}>Chatbot</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Enter your text here"
-                value={inputText}
-                onChangeText={setInputText}
-            />
-            <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
-            {result !== '' && <Text style={styles.result}>{result}</Text>}
+            <Text style={styles.title}>Chatbot</Text>
+            <View style={styles.chat}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter your text here"
+                    value={inputText}
+                    onChangeText={setInputText}
+                />
+                <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+                {result !== '' && <Text style={styles.result}>{result}</Text>}</View>
         </View>
     );
 }
@@ -59,8 +60,9 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
+        paddingTop: 100,
         padding: 16,
     },
     title: {
@@ -78,5 +80,14 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
+        textAlign: 'center'
+    },
+    result: {
+        textAlign: 'justify'
+    },
+    chat: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 16,
     }
 });
