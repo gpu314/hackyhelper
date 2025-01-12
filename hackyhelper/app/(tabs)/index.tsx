@@ -1,37 +1,57 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 
 export default function Page() {
   return (
-    <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome to HackyHelper!</Text>
-        <Text style={styles.description}>
-          HackyHelper is your go-to AI companion designed to assist hackers in all aspects of their hackathon.
-        </Text>
-
-        <View style={styles.listContainer}>
-          <Text style={styles.listItem}>Our product includes:</Text>
-          <Text style={styles.listItem}>
-            • A personal AI companion to help you through the hackathon. You can ask it anything! This includes what upcoming workshops you might want to attend or what time the next meal is.
-          </Text>
-          <Text style={styles.listItem}>
-            • Use a map to locate event locations (opening ceremony, hacking spaces, etc.). If you ever get lost, this is your tool!
-          </Text>
-          <Text style={styles.listItem}>
-            • An enhanced version of Rubber Duck Debugging! Explain the issue to the AI model, and it will provide feedback as both of you race to solve your bug.
-          </Text>
-          <Text style={styles.listItem}>
-            • A convenient contact page for quickly finding hackathon emergency (or regular) contact information.
-          </Text>
-        </View>
-
-        <Text style={styles.bot}>Check out our page options below!</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.headerBar}>
+          <Text style={styles.headerTitle}>Welcome to HackyHelper!</Text>
       </View>
-    </ScrollView>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
+        <View style={styles.container}>
+          <Text style={styles.description}>
+            HackyHelper is your go-to AI companion designed to assist hackers in all aspects of their hackathon.
+          </Text>
+
+          <View style={styles.listContainer}>
+            <Text style={styles.listItem}>Our product includes:</Text>
+            <Text style={styles.listItem}>
+              • A personal AI companion to help you through the hackathon. You can ask it anything! This includes what upcoming workshops you might want to attend or what time the next meal is.
+            </Text>
+            <Text style={styles.listItem}>
+              • Use a map to locate event locations (opening ceremony, hacking spaces, etc.). If you ever get lost, this is your tool!
+            </Text>
+            <Text style={styles.listItem}>
+              • An enhanced version of Rubber Duck Debugging! Explain the issue to the AI model, and it will provide feedback as both of you race to solve your bug.
+            </Text>
+            <Text style={styles.listItem}>
+              • A convenient contact page for quickly finding hackathon emergency (or regular) contact information.
+            </Text>
+          </View>
+
+          <Text style={styles.bot}>Check out our page options below!</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  headerBar: {
+    height: 60,
+    backgroundColor: '#007BFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  headerTitle: {
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   scrollView: {
     flex: 1,
   },
@@ -46,13 +66,23 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: '700',
     marginBottom: 30,
     marginTop: 30,
     color: '#2C3E50',
     textAlign: 'center',
     letterSpacing: 0.5,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+  locationText: {
+    fontSize: 18,
+    marginBottom: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   description: {
     fontSize: 18,
@@ -99,3 +129,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();

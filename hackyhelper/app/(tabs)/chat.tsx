@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView, Pressable } from 'react-native';
+import { View, TextInput, Text, StyleSheet, Image, FlatList, ScrollView, Pressable, SafeAreaView } from 'react-native';
 import * as Speech from 'expo-speech';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 
@@ -121,35 +121,55 @@ export default function App() {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Chatbot</Text>
-                <FlatList
-                    data={result}
-                    renderItem={renderResult}
-                    keyExtractor={(_, index) => index.toString()}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your text here"
-                    value={inputText}
-                    onChangeText={setInputText}
-                />
-                <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
-                    <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
-                </Pressable>
-                <Pressable style={styles.button} onPress={handleStartStop}>
-                    <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
-                </Pressable>
-
-                <View style={styles.imageWrapper}>
-                    <Image source={urls[currentFrame]} style={styles.image} />
-                </View>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.headerBar}>
+                <Text style={styles.headerTitle}>Duck Bot</Text>
             </View>
-        </ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                <View style={styles.container}>
+                    <FlatList
+                        data={result}
+                        renderItem={renderResult}
+                        keyExtractor={(_, index) => index.toString()}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your text here"
+                        value={inputText}
+                        onChangeText={setInputText}
+                    />
+                    <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+                        <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
+                    </Pressable>
+                    <Pressable style={styles.button} onPress={handleStartStop}>
+                        <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
+                    </Pressable>
+
+                    <View style={styles.imageWrapper}>
+                        <Image source={urls[currentFrame]} style={styles.image} />
+                    </View>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     )
 };
 const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
+    headerBar: {
+        height: 60,
+        backgroundColor: '#007BFF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    headerTitle: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
     container: {
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -158,7 +178,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        marginBottom: 20,
+        fontWeight: '700',
+        marginBottom: 30,
+        marginTop: 30,
+        color: '#2C3E50',
+        textAlign: 'center',
+        letterSpacing: 0.5,
     },
     button: {
         backgroundColor: '#007BFF',
@@ -203,10 +228,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
         textAlign: 'justify'
-    }, scrollViewContent: {
+    },
+    scrollViewContent: {
         justifyContent: 'flex-start',
         alignItems: 'center',
     }
 
 });
-
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();

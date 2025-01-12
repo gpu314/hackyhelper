@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView, SafeAreaView } from 'react-native';
 import * as Speech from 'expo-speech';
 import * as FileSystem from 'expo-file-system';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -705,34 +705,35 @@ http://rogerdudler.github.io/git-guide/
 
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <SafeAreaView style={styles.safeArea}>
             <View style={styles.headerBar}>
                 <Text style={styles.headerTitle}>AI Schedule Assistant</Text>
             </View>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                <View style={styles.container}>
+                    <FlatList
+                        data={result}
+                        renderItem={renderResult}
+                        keyExtractor={(_, index) => index.toString()}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your text here"
+                        value={inputText}
+                        onChangeText={setInputText}
+                    />
+                    <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
 
 
-
-            <View style={styles.container}>
-                <Text style={styles.title}>AI Schedule Assistant</Text>
-                <FlatList
-                    data={result}
-                    renderItem={renderResult}
-                    keyExtractor={(_, index) => index.toString()}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your text here"
-                    value={inputText}
-                    onChangeText={setInputText}
-                />
-                <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
-
-
-            </View>
-        </ScrollView>
+                </View>
+            </ScrollView></SafeAreaView>
     )
 };
 const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     headerBar: {
         height: 60,
         backgroundColor: '#007BFF',
@@ -759,7 +760,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        marginBottom: 20,
+        fontWeight: '700',
+        marginBottom: 30,
+        marginTop: 30,
+        color: '#2C3E50',
+        textAlign: 'center',
+        letterSpacing: 0.5,
     },
     button: {
         backgroundColor: '#007BFF',
@@ -813,3 +819,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     }
 });
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();

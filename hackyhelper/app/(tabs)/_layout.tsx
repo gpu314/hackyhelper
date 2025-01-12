@@ -7,7 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -54,6 +54,16 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="robot-confused-outline" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="contact"
+        options={{
+          title: 'Contact',
+          tabBarIcon: ({ color }) => <Feather size={28} name="phone" color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
