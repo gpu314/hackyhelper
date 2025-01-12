@@ -1,10 +1,10 @@
 import Groq from 'groq-sdk';
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView, SafeAreaView } from 'react-native';
-import * as Speech from 'expo-speech';
-import * as FileSystem from 'expo-file-system';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import React, { useState } from 'react';
+import { View, TextInput, Pressable, Text, StyleSheet, Image, FlatList, ScrollView, SafeAreaView } from 'react-native';
+// import * as Speech from 'expo-speech';
+// import * as FileSystem from 'expo-file-system';
+// import ParallaxScrollView from '@/components/ParallaxScrollView';
+// import { IconSymbol } from '@/components/ui/IconSymbol';
 
 
 interface Message {
@@ -12,7 +12,7 @@ interface Message {
     content: string;
 }
 
-const VOICE = "com.apple.ttsbundle.Samantha-compact";
+// const VOICE = "com.apple.ttsbundle.Samantha-compact";
 
 export default function App() {
     const hackathonName = "She Hacks";
@@ -681,11 +681,11 @@ http://rogerdudler.github.io/git-guide/
             setResult((prev) => [...(prev || []), { role: 'user', content: inputText }]);
             const response = await aiResponse(inputText);
             setResult((prev) => [...prev, { role: 'assistant', content: response || "No response generated." }]);
-            Speech.speak(response || "No response generated.", {
-                voice: VOICE,
-                pitch: 1.2,
-                rate: 0.9,
-            });
+            // Speech.speak(response || "No response generated.", {
+            //     voice: VOICE,
+            //     pitch: 1.2,
+            //     rate: 0.9,
+            // });
         } catch (error) {
             setResult((prev) => [...prev, { role: 'assistant', content: "Error generating response." }]);
             console.error(error);
@@ -722,7 +722,9 @@ http://rogerdudler.github.io/git-guide/
                         value={inputText}
                         onChangeText={setInputText}
                     />
-                    <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+                    <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+                        <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
+                    </Pressable>
 
 
                 </View>
@@ -736,7 +738,7 @@ const styles = StyleSheet.create({
     },
     headerBar: {
         height: 60,
-        backgroundColor: '#007BFF',
+        backgroundColor: '#8B59F5',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -752,23 +754,8 @@ const styles = StyleSheet.create({
         paddingTop: 100,
         padding: 16,
     },
-    headerImage: {
-        color: '#FFFFFF',
-        bottom: -190,
-        left: -35,
-        position: 'absolute',
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: '700',
-        marginBottom: 30,
-        marginTop: 30,
-        color: '#2C3E50',
-        textAlign: 'center',
-        letterSpacing: 0.5,
-    },
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#8B59F5',
         padding: 10,
         borderRadius: 5,
     },
@@ -779,42 +766,22 @@ const styles = StyleSheet.create({
     input: {
         padding: 10,
         borderRadius: 5,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: "#20283E"
     },
     userMessage: {
         padding: 10,
         borderRadius: 5,
-        backgroundColor: '#D1E7DD',
+        backgroundColor: '#80CFA9',
         alignSelf: 'flex-end'
     },
     assistantMessage: {
         padding: 10,
         borderRadius: 5,
-        backgroundColor: '#F8D7DA',
+        backgroundColor: '#EDDCFB',
         alignSelf: 'flex-start'
     },
-    chat: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-    },
-    imageWrapper: {
-        position: 'static',
-        width: 100,
-        height: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    image: {
-        width: 100,
-        height: 100,
-    },
-    result: {
-        marginTop: 20,
-        fontSize: 16,
-        color: '#333',
-        textAlign: 'justify'
-    }, scrollViewContent: {
+    scrollViewContent: {
         justifyContent: 'flex-start',
         alignItems: 'center',
     }

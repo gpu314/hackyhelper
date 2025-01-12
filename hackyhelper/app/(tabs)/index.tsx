@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   headerBar: {
     height: 60,
-    backgroundColor: '#007BFF',
+    backgroundColor: '#8B59F5',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -65,15 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: '100%',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 30,
-    marginTop: 30,
-    color: '#2C3E50',
-    textAlign: 'center',
-    letterSpacing: 0.5,
-  },
   map: {
     width: '100%',
     height: '100%',
@@ -89,7 +80,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     marginTop: 10,
-    color: 'black',
+    color: '#20283E',
     paddingHorizontal: 15,
   },
   listContainer: {
@@ -101,7 +92,7 @@ const styles = StyleSheet.create({
   listItem: {
     fontSize: 16,
     marginBottom: 15,
-    color: '#2C3E50',
+    color: '#20283E',
     lineHeight: 22,
     paddingLeft: 10,
     fontWeight: '500',
@@ -110,23 +101,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 18,
     fontWeight: '600',
-    color: '#2980B9',
-  },
-  button: {
-    backgroundColor: '#3498DB',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    elevation: 6,
-    marginTop: 30,
-    width: '80%',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
-    textAlign: 'center',
+    color: '#36827F',
   },
 });
 import { LogBox } from 'react-native';

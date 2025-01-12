@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   headerBar: {
     height: 60,
-    backgroundColor: '#007BFF',
+    backgroundColor: '#8B59F5',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -100,27 +100,19 @@ const styles = StyleSheet.create({
   //   width: '100%',
   //   paddingVertical: 15,
   // },
-  title: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 30,
-    marginTop: 30,
-    color: '#2C3E50',
-    textAlign: 'center',
-    letterSpacing: 0.5,
-  },
+
   section: {
     marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#555',
+    color: '#20283E',
     marginBottom: 8,
   },
   sectionInfo: {
     fontSize: 16,
-    color: '#555',
+    color: '#20283E',
     marginBottom: 8,
     marginTop: 8,
   },
