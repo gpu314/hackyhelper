@@ -92,39 +92,39 @@ Learn how we use Slack in organizations video link: https://www.youtube.com/watc
 
 Join our official SheHacks+ 9 Slack link here: https://join.slack.com/t/shehacks8/shared_invite/zt-29vqiqxw7-2NkqB4hEpB69WXQasH3diw
 
-**`#announcements**` 
+**#announcements** 
 
 All important information regarding workshops, opening and closing ceremonies, and surprise announcements will be made here!
 
-**`#team-formation`**
+**#team-formation**
 
 If you’re an almost-filled team looking for 1-2 additional team members, or if you’re an individual hacker looking for a team.
 
-**`#intros**` 
+**#intros** 
 
 Introduce yourself to the other hackers. We’d all love to get to know you! Get to know our organizing SheHacks+ team and the mentors you’ll be learning from and consulting all weekend.
 
-**`#mentorship-help`**
+**#mentorship-help**
 
 If you’re stuck or need some advice, give any of our mentors a shout here! Create a ticket and a mentor will connect with you.
 
-**`#hardware-requests`**
+**#hardware-requests**
 
 Have a hardware question? Not sure when the hardware desk is open? Ask here! An organizer will connect with you.
 
-**`#random`**
+**#random**
 
 Questions? See something cool in the news? Feel free to drop messages here!
 
-**`#sponsors`**
+**#sponsors**
 
 Network and meet with sponsors here, check out what fun events they may be having at their booth as well.
 
-**`#questions`**
+**#questions**
 
 If you have general questions around the event, ask them here!
 
-**`#workshop-resources`**
+**#workshop-resources**
 
 Here you’ll find the latest pre-workshop resources, and post-workshop resources. You can also ask questions or follow-up on the workshops you attended.
 
@@ -418,14 +418,14 @@ No API requirements for this prize! You do not need to use Warp.
 
 # 🔍 Hacker Olympics
 
-```
+
 Hacker Olympics is the beginner 
 stream of SheHacks+ that allows 
 hackers with no technical experience
 to engage in challenges from 
 different subsets of the technology 
 industry. 
-```
+
 
 In teams of 3-4 you’ll participate in workshops that will help you complete a final project that incorporates parts from each workshop:
 
@@ -452,23 +452,23 @@ On demo day, you will then pitch your project to workshop leaders and battle for
 
 Join our official SheHacks+ 9 Slack link: https://join.slack.com/t/shehacks8/shared_invite/zt-29vqiqxw7-2NkqB4hEpB69WXQasH3diw
 
-**`Your private team channel`**
+**Your private team channel**
 
 A workspace accessible to just you and your team members! The SheHacks+ team and mentors can also enter if you request help. Happy collaborating!
 
-**`#announcements`**
+**#announcements**
 
 All important information regarding workshops, opening and closing ceremonies, and surprise announcements will be made here!
 
-**`#intros`**
+**#intros**
 
 Introduce yourself to the other hackers. We’d all love to get to know you!
 
-**`#mentorship-help`**
+**#mentorship-help**
 
 If you’re stuck or need some advice, give any of our mentors a shout here!
 
-**`#rideshare`**
+**#rideshare**
 
 Looking for buddies to travel with?
 
