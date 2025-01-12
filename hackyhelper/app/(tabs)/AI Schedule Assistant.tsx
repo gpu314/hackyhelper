@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerTitle: {
-        color: '#FFF',
+        color: '#FFFFFF',
         fontSize: 20,
         fontWeight: 'bold',
     },
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     headerImage: {
-        color: '#808080',
+        color: '#FFFFFF',
         bottom: -190,
         left: -35,
         position: 'absolute',
