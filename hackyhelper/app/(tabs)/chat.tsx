@@ -1,8 +1,8 @@
 import Groq from 'groq-sdk';
-
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, Pressable } from 'react-native';
 import * as Speech from 'expo-speech';
+import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 
 interface Message {
     role: 'user' | 'assistant';
@@ -18,12 +18,14 @@ export default function App() {
     ]);
     const [loading, setLoading] = useState(false);
     const [currentFrame, setCurrentFrame] = useState(0);
+    const [recognizing, setRecognizing] = useState(false);
+    const [transcript, setTranscript] = useState('');
+    const pauseTimer = useRef<null | ReturnType<typeof setTimeout>>(null);
 
     const client = new Groq({
         apiKey: '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',
         dangerouslyAllowBrowser: true,
     });
-
 
     async function aiResponse(text: string) {
         const chatCompletion = await client.chat.completions.create({
@@ -65,8 +67,8 @@ export default function App() {
             <View style={[(item.role === 'user') ? styles.userMessage : styles.assistantMessage]}>
                 <Text>{item.content}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     const urls = [
         require("../images/1.png"), require("../images/2.png"), require("../images/3.png"),
@@ -81,9 +83,42 @@ export default function App() {
         const interval = setInterval(() => {
             setCurrentFrame((prevFrame) => (prevFrame + 1) % 16);
         }, 60);
-
-        return () => clearInterval(interval); // Clean up on component unmount
+        return () => clearInterval(interval);
     }, []);
+
+    useSpeechRecognitionEvent("start", () => setRecognizing(true));
+    useSpeechRecognitionEvent("end", () => { setRecognizing(false); handleSubmit(); });
+    useSpeechRecognitionEvent("result", (event) => { setTranscript(event.results[0]?.transcript); setInputText(event.results[0]?.transcript); });
+
+    const handleStartStop = async () => {
+        if (recognizing) {
+            ExpoSpeechRecognitionModule.stop();
+        }
+        else {
+            const result = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
+            if (result.granted) {
+                ExpoSpeechRecognitionModule.start({
+                    lang: "en-US",
+                    interimResults: true,
+                    maxAlternatives: 1,
+                    continuous: true,
+                    requiresOnDeviceRecognition: false,
+                    addsPunctuation: false,
+                });
+
+                if (pauseTimer.current) {
+                    clearTimeout(pauseTimer.current);
+                }
+
+                pauseTimer.current = setTimeout(() => {
+                    ExpoSpeechRecognitionModule.stop();
+                }, 3000);
+            }
+            else {
+                console.warn("Permissions not granted", result);
+            }
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -99,14 +134,20 @@ export default function App() {
                 value={inputText}
                 onChangeText={setInputText}
             />
-            <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+            <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+                <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
+            </Pressable>
+            <Pressable style={styles.button} onPress={handleStartStop}>
+                <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
+            </Pressable>
 
             <View style={styles.imageWrapper}>
                 <Image source={urls[currentFrame]} style={styles.image} />
             </View>
+        </View>
+    );
+}
 
-        </View>)
-};
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-start',
@@ -122,6 +163,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007BFF',
         padding: 10,
         borderRadius: 5,
+        marginTop: 10,
     },
     buttonText: {
         color: '#fff',
@@ -144,11 +186,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F8D7DA',
         alignSelf: 'flex-start'
     },
-    chat: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-    },
     imageWrapper: {
         position: 'static',
         width: 100,
@@ -160,10 +197,5 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
-    result: {
-        marginTop: 20,
-        fontSize: 16,
-        color: '#333',
-        textAlign: 'justify'
-    }
 });
+
