@@ -58,7 +58,6 @@
             if (!isTracking) {
                 document.getElementById("break").innerText = "";
 
-
                 // Start the timer when probability exceeds 0.6
                 startTime = Date.now();
                 isTracking = true;
@@ -66,18 +65,14 @@
                 // Update elapsed time while probability remains above 0.6
                 elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
                 document.getElementById("time-display").innerText = "Elapsed Time: " + elapsedTime + " seconds";
-                if (elapsedTime > 1000) {
+
+                if (elapsedTime >= 1500) {
                     document.getElementById("break").innerText = "Take a break!";
                 }
-
             }
         } else {
             if (isTracking) {
-                // Reset when probability falls below 0.6
-                if (elapsedTime > 1000) {
-                    document.getElementById("break").innerText = "You're taking a break!";
-                }
-
+                document.getElementById("break").innerText = "You're taking a break!";
                 isTracking = false;
                 document.getElementById("time-display").innerText = "Time stopped. Total time: " + elapsedTime + " seconds";
                 elapsedTime = 0; // Optionally reset the elapsed time
