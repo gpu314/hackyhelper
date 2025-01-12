@@ -1,7 +1,7 @@
 import Groq from 'groq-sdk';
 
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 import * as Speech from 'expo-speech';
 
 interface Message {
@@ -86,26 +86,30 @@ export default function App() {
     }, []);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Chatbot</Text>
-            <FlatList
-                data={result}
-                renderItem={renderResult}
-                keyExtractor={(_, index) => index.toString()}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Enter your text here"
-                value={inputText}
-                onChangeText={setInputText}
-            />
-            <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
 
-            <View style={styles.imageWrapper}>
-                <Image source={urls[currentFrame]} style={styles.image} />
+            <View style={styles.container}>
+                <Text style={styles.title}>Chatbot</Text>
+                <FlatList
+                    data={result}
+                    renderItem={renderResult}
+                    keyExtractor={(_, index) => index.toString()}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter your text here"
+                    value={inputText}
+                    onChangeText={setInputText}
+                />
+                <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
+
+                <View style={styles.imageWrapper}>
+                    <Image source={urls[currentFrame]} style={styles.image} />
+                </View>
+
             </View>
-
-        </View>)
+        </ScrollView>
+    )
 };
 const styles = StyleSheet.create({
     container: {
@@ -165,5 +169,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
         textAlign: 'justify'
+    }, scrollViewContent: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     }
+
 });
