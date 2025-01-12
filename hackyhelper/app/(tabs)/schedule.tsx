@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 import * as Speech from 'expo-speech';
 import * as FileSystem from 'expo-file-system';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -729,13 +729,11 @@ http://rogerdudler.github.io/git-guide/
     }, []);
 
     return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-            headerImage={
-                <View style={styles.headerBar}>
-                    <Text style={styles.headerTitle}>AI Schedule Assistant</Text>
-                </View>
-            }>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.headerBar}>
+                <Text style={styles.headerTitle}>AI Schedule Assistant</Text>
+            </View>
+
 
 
             <View style={styles.container}>
@@ -758,7 +756,7 @@ http://rogerdudler.github.io/git-guide/
                 </View>
 
             </View>
-        </ParallaxScrollView >
+        </ScrollView>
     )
 };
 const styles = StyleSheet.create({
@@ -767,6 +765,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007BFF',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '100%',
     },
     headerTitle: {
         color: '#FFFFFF',
@@ -836,5 +835,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
         textAlign: 'justify'
+    }, scrollViewContent: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     }
 });
