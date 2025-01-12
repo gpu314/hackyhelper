@@ -1,5 +1,5 @@
 https://teachablemachine.withgoogle.com/models/gse0vFM-C/
-https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+https://github.com/googlecreativelab/teachablemxachine-community/tree/master/libraries/pose
 
 <div>Teachable Machine Pose Model</div>
 <button type="button" onclick="init()">Start</button>
