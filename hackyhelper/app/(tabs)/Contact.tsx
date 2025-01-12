@@ -1,4 +1,3 @@
-// App.tsx
 import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'react-native';
 
