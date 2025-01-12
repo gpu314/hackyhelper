@@ -122,7 +122,6 @@ export default function App() {
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-
             <View style={styles.container}>
                 <Text style={styles.title}>Chatbot</Text>
                 <FlatList
@@ -137,16 +136,15 @@ export default function App() {
                     onChangeText={setInputText}
                 />
                 <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
-                <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={handleStartStop}>
-                <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
-            </Pressable>
+                    <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={handleStartStop}>
+                    <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
+                </Pressable>
 
-            <View style={styles.imageWrapper}>
-                <Image source={urls[currentFrame]} style={styles.image} />
-            </View>
-
+                <View style={styles.imageWrapper}>
+                    <Image source={urls[currentFrame]} style={styles.image} />
+                </View>
             </View>
         </ScrollView>
     )
