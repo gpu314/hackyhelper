@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 
@@ -43,32 +43,55 @@ export default function Page() {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Map</Text>
-            <Text style={styles.locationText}>{locationText}</Text>
-            <MapView
-                style={styles.map}
-                pitchEnabled={true}
-                rotateEnabled={true}
-                zoomEnabled={true}
-                showsBuildings={true}
-                initialRegion={initialRegion}
-            />
-        </View>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.headerBar}>
+                <Text style={styles.headerTitle}>Map</Text>
+            </View>
+            <View style={styles.container}>
+                <Text style={styles.locationText}>{locationText}</Text>
+                <MapView
+                    style={styles.map}
+                    pitchEnabled={true}
+                    rotateEnabled={true}
+                    zoomEnabled={true}
+                    showsBuildings={true}
+                    initialRegion={initialRegion}
+                />
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
+    headerBar: {
+        height: 60,
+        backgroundColor: '#007BFF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    headerTitle: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
     container: {
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        paddingTop: 100,
         padding: 16,
     },
     title: {
         fontSize: 24,
-        marginBottom: 20,
+        fontWeight: '700',
+        marginBottom: 30,
+        color: '#2C3E50',
+        textAlign: 'center',
+        letterSpacing: 0.5,
     },
     map: {
         width: '100%',
@@ -81,3 +104,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
