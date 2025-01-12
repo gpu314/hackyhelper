@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     },
     headerBar: {
         height: 60,
-        backgroundColor: '#007BFF',
+        backgroundColor: '#8B59F5',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -176,17 +176,8 @@ const styles = StyleSheet.create({
         paddingTop: 100,
         padding: 16,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: '700',
-        marginBottom: 30,
-        marginTop: 30,
-        color: '#2C3E50',
-        textAlign: 'center',
-        letterSpacing: 0.5,
-    },
     button: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#8B59F5',
         padding: 10,
         borderRadius: 5,
         marginTop: 10,
@@ -203,13 +194,13 @@ const styles = StyleSheet.create({
     userMessage: {
         padding: 10,
         borderRadius: 5,
-        backgroundColor: '#D1E7DD',
+        backgroundColor: '#80CFA9',
         alignSelf: 'flex-end'
     },
     assistantMessage: {
         padding: 10,
         borderRadius: 5,
-        backgroundColor: '#F8D7DA',
+        backgroundColor: '#EDDCFB',
         alignSelf: 'flex-start'
     },
     imageWrapper: {
@@ -226,7 +217,7 @@ const styles = StyleSheet.create({
     result: {
         marginTop: 20,
         fontSize: 16,
-        color: '#333',
+        color: '#20283E',
         textAlign: 'justify'
     },
     scrollViewContent: {

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     headerBar: {
         height: 60,
-        backgroundColor: '#007BFF',
+        backgroundColor: '#8B59F5',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -85,14 +85,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 16,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: '700',
-        marginBottom: 30,
-        color: '#2C3E50',
-        textAlign: 'center',
-        letterSpacing: 0.5,
-    },
     map: {
         width: '100%',
         height: '100%',
@@ -100,8 +92,8 @@ const styles = StyleSheet.create({
     locationText: {
         fontSize: 18,
         marginBottom: 20,
-        fontWeight: 'bold',
         textAlign: 'center',
+        color: '#20283E'
     },
 });
 import { LogBox } from 'react-native';
