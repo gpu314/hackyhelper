@@ -135,18 +135,18 @@ Here you’ll find the latest pre-workshop resources, and post-workshop resource
 
 Friday:
 
-Check-in 6–8 PM: Upper Atrium + PAB 159
-Dinner Served 6–8 PM: Lower Atrium
-Networking Booths Open 6–7 PM: Upper Atrium (sponsors may open/close booths anytime)
+Check-in 6 to 8 PM: Upper Atrium + PAB 159
+Dinner Served 6 to 8 PM: Lower Atrium
+Networking Booths Open 6 to 7 PM: Upper Atrium (sponsors may open/close booths anytime)
 
 Opening Ceremonies
-8–9:30 PM
+8 to 9:30 PM
 
-Orientation & Team Formation 9:30–10 PM: Lower Atrium
+Orientation & Team Formation 9:30 to 10 PM: Lower Atrium
 Hacking Begins! 10 PM
 
 WCS Workshop: PAB 106
-10 PM–10:30 AM
+10 PM to 10:30 AM
 
 Movie Night + Snacks: NSC 145
 10-11 PM
@@ -161,66 +161,66 @@ Hardware Lab 8AM-10AM: PAB 48
 Breakfast Served 8AM-9AM: Lower Atrium
 Networking Booths Open 8AM-12AM: Upper Atrium
 
-PointClickCare Workshop 10–10:30 AM: PAB 148
+PointClickCare Workshop 10 to 10:30 AM: PAB 148
 Morning Tea Tasting 10AM-11AM: PAB 100
 
-TD Interviews 10:30 AM–12 PM: PAB 101, 103, 105
+TD Interviews 10:30 AM to 12 PM: PAB 101, 103, 105
 
-OTPP Workshop 11–11:30 AM: PAB 148
+OTPP Workshop 11 to 11:30 AM: PAB 148
 
 
-Lunch Served 12–1 PM: Lower Atrium
+Lunch Served 12 to 1 PM: Lower Atrium
 Bracelet Making, Sunglasses Making, Tarot Card Reading 12-4PM: PAB 103, 105 (until supplies last)
 
 
-Voiceflow Workshop 1–1:30 PM: PAB 148
+Voiceflow Workshop 1 to 1:30 PM: PAB 148
 
 
-MLH Workshop 2–2:30 PM: PAB 148
+MLH Workshop 2 to 2:30 PM: PAB 148
 
 
-WiE Workshop 3–3:30 PM: PAB 106
+WiE Workshop 3 to 3:30 PM: PAB 106
 
 
-Scotiabank Workshop 4–4:30 PM: PAB 148
+Scotiabank Workshop 4 to 4:30 PM: PAB 148
 
 
-Sponsor Speed Networking 5–6 PM: PAB 100
+Sponsor Speed Networking 5 to 6 PM: PAB 100
 
 
-MLH TechTogether Meetup 5–6 PM: PAB 150
+MLH TechTogether Meetup 5 to 6 PM: PAB 150
 
 
-PointClickCare Dinner 6–7 PM: PAB 27
+PointClickCare Dinner 6 to 7 PM: PAB 27
 
 
-WCS Workshop 7–7:30 PM: PAB 106
+WCS Workshop 7 to 7:30 PM: PAB 106
 
 
-MLH Workshop 8–8:30 PM: PAB 148
+MLH Workshop 8 to 8:30 PM: PAB 148
 
 
-WITS+ / WARP Workshop 9–9:30 PM: PAB 106
+WITS+ / WARP Workshop 9 to 9:30 PM: PAB 106
 
 
-Red Bull Pong, Fire Noodle Challenge, Karaoke, Snacks 10:30 PM–12:30 AM: PAB 103, 105, 101 (until supplies last)
+Red Bull Pong, Fire Noodle Challenge, Karaoke, Snacks 10:30 PM to 12:30 AM: PAB 103, 105, 101 (until supplies last)
 Sunday
 
 
-Submission Drop-in Booth 8–10 AM: PAB 159
+Submission Drop-in Booth 8 to 10 AM: PAB 159
 Breakfast Served 10 AM: Lower Atrium
 
 
-Live Judging 10 AM–12 PM: Upper and Lower Atrium
+Live Judging 10 AM to 12 PM: Upper and Lower Atrium
 
 
-Lunch Served 11 AM–12 PM: Lower Atrium
+Lunch Served 11 AM to 12 PM: Lower Atrium
 
 
-Therapy Dogs 12–1 PM: Upper Atrium
+Therapy Dogs 12 to 1 PM: Upper Atrium
 
 
-Closing Ceremonies 1–2 PM
+Closing Ceremonies 1 to 2 PM
 
 
 ---
@@ -480,33 +480,33 @@ Looking for buddies to travel with?
 Friday
 
 
-Check-in 6–8 PM: Upper Atrium & PAB 159
+Check-in 6 to 8 PM: Upper Atrium & PAB 159
 
 
-Opening Ceremonies 7–8 PM: NSC 145
+Opening Ceremonies 7 to 8 PM: NSC 145
 
 
-Orientation & Team Formation 8–10 PM: Lower Atrium
+Orientation & Team Formation 8 to 10 PM: Lower Atrium
 Networking Booths Open: Upper Atrium 8PM-1AM (sponsors may open/close booths anytime)
 
 
-Hackathon Introduction & Intro to Figma 10 PM–12 AM: PAB 117
+Hackathon Introduction & Intro to Figma 10 PM to 12 AM: PAB 117
 Saturday
-8 AM–12 PM
+8 AM to 12 PM
 
 Networking Booths Open 8AM-1PM: Upper Atrium
 
 
-Intro to GitHub 9–10 AM: PAB 117
+Intro to GitHub 9 to 10 AM: PAB 117
 
 
-Intro to HTML & CSS 11 AM–12 PM: PAB 117
+Intro to HTML & CSS 11 AM to 12 PM: PAB 117
 
 
-Intro to JavaScript 2–3 PM: PAB 117
+Intro to JavaScript 2 to 3 PM: PAB 117
 
 
-Sponsor Speed Networking 5–6 PM: PAB 100
+Sponsor Speed Networking 5 to 6 PM: PAB 100
 
 Sunday
 
@@ -514,7 +514,7 @@ Sunday
 Project Due 10 AM!
 
 
-Closing Ceremonies 1–2 PM: NSC 145
+Closing Ceremonies 1 to 2 PM: NSC 145
 
 ---
 
