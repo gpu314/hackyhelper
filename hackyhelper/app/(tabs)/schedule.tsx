@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 import * as Speech from 'expo-speech';
 import * as FileSystem from 'expo-file-system';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -659,14 +659,6 @@ http://rogerdudler.github.io/git-guide/
 
     const [CurrTime, setCurrTime] = useState(customTime());
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrTime(customTime());
-        }, 1000); // Update every second
-
-        return () => clearInterval(interval);
-    }, []);
-
 
     async function aiResponse(text: string) {
         const chatCompletion = await client.chat.completions.create({
@@ -711,31 +703,13 @@ http://rogerdudler.github.io/git-guide/
         )
     }
 
-    const urls = [
-        require("../images/1.png"), require("../images/2.png"), require("../images/3.png"),
-        require("../images/4.png"), require("../images/5.png"), require("../images/6.png"),
-        require("../images/7.png"), require("../images/8.png"), require("../images/9.png"),
-        require("../images/10.png"), require("../images/11.png"), require("../images/12.png"),
-        require("../images/13.png"), require("../images/14.png"), require("../images/15.png"),
-        require("../images/16.png")
-    ];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentFrame((prevFrame) => (prevFrame + 1) % 16);
-        }, 60);
-
-        return () => clearInterval(interval); // Clean up on component unmount
-    }, []);
 
     return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-            headerImage={
-                <View style={styles.headerBar}>
-                    <Text style={styles.headerTitle}>AI Schedule Assistant</Text>
-                </View>
-            }>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.headerBar}>
+                <Text style={styles.headerTitle}>AI Schedule Assistant</Text>
+            </View>
+
 
 
             <View style={styles.container}>
@@ -753,12 +727,9 @@ http://rogerdudler.github.io/git-guide/
                 />
                 <Button title={loading ? "Processing..." : "Submit"} onPress={handleSubmit} disabled={loading} />
 
-                <View style={styles.imageWrapper}>
-                    <Image source={urls[currentFrame]} style={styles.image} />
-                </View>
 
             </View>
-        </ParallaxScrollView >
+        </ScrollView>
     )
 };
 const styles = StyleSheet.create({
@@ -767,6 +738,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007BFF',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '100%',
     },
     headerTitle: {
         color: '#FFFFFF',
@@ -836,5 +808,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
         textAlign: 'justify'
+    }, scrollViewContent: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     }
 });

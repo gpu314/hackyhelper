@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk';
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, Pressable } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Image, FlatList, ScrollView, Pressable } from 'react-native';
 import * as Speech from 'expo-speech';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 
@@ -121,33 +121,34 @@ export default function App() {
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Chatbot</Text>
-            <FlatList
-                data={result}
-                renderItem={renderResult}
-                keyExtractor={(_, index) => index.toString()}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Enter your text here"
-                value={inputText}
-                onChangeText={setInputText}
-            />
-            <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
-                <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={handleStartStop}>
-                <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
-            </Pressable>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Chatbot</Text>
+                <FlatList
+                    data={result}
+                    renderItem={renderResult}
+                    keyExtractor={(_, index) => index.toString()}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter your text here"
+                    value={inputText}
+                    onChangeText={setInputText}
+                />
+                <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+                    <Text style={styles.buttonText}>{loading ? "Processing..." : "Submit"}</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={handleStartStop}>
+                    <Text style={styles.buttonText}>{recognizing ? "Stop Listening" : "Start Listening"}</Text>
+                </Pressable>
 
-            <View style={styles.imageWrapper}>
-                <Image source={urls[currentFrame]} style={styles.image} />
+                <View style={styles.imageWrapper}>
+                    <Image source={urls[currentFrame]} style={styles.image} />
+                </View>
             </View>
-        </View>
-    );
-}
-
+        </ScrollView>
+    )
+};
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-start',
@@ -197,5 +198,15 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
+    result: {
+        marginTop: 20,
+        fontSize: 16,
+        color: '#333',
+        textAlign: 'justify'
+    }, scrollViewContent: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    }
+
 });
 
