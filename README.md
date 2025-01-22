@@ -17,3 +17,5 @@ Our debug “chat” feature works similar to our schedule chat, but the secret 
 Our break manager uses a somewhat pre-trained AI model to track user position. We further trained this model with over 500 test cases over adjusted epochs, batch size, and learning rate values. This resulted in a very accurate model that is able to detect if the user is working and will track time so that after 25 minutes, users are asked to take a short break.
 
 Our app is the ultimate hackathon companion. With HackyHelper, hackers are able to focus on what truly matters—learning, connecting, and innovating— with a more comfortable experience, making the hackathon experience remarkable! Thank you!
+
+Demo: [https://www.youtube.com/watch?v=OIeU4zI2QZ0](https://www.youtube.com/watch?v=OIeU4zI2QZ0)
